@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mu. Krishna Raj | MEAN Stack & Web3 Developer</title>
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#04070d',
+              900: '#090e17',
+              850: '#0f1623',
+              800: '#151e2e',
+              700: '#1e293b',
+            },
+            cyber: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle cyber grid background & scrollbar */
+    body {
+      background-color: #04070d;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    .bg-cyber-grid {
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(16, 185, 129, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(16, 185, 129, 0.045) 1px, transparent 1px);
+    }
+
+    .glass-card {
+      background: rgba(15, 22, 35, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(52, 211, 153, 0.14);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(52, 211, 153, 0.38);
+      box-shadow: 0 10px 35px -10px rgba(16, 185, 129, 0.16);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #04070d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+
+    /* Modal transition */
+    .modal-backdrop {
+      transition: opacity 0.25s ease;
+    }
+    .modal-panel {
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+  </style>
+</head>
+<body class="bg-obsidian-950 bg-cyber-grid font-sans antialiased selection:bg-cyber-500/30 selection:text-cyber-400">
+
+  <!-- Ambient Top Glow -->
+  <div class="pointer-events-none fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl">
+    <div class="relative left-[calc(50%-14rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-[25deg] bg-gradient-to-tr from-emerald-500/20 via-teal-500/10 to-cyan-500/15 opacity-60 sm:left-[calc(50%-24rem)] sm:w-[68rem]"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 border-b border-emerald-500/10 bg-obsidian-950/85 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+      <!-- Brand Logo -->
+      <a href="#home" class="group flex items-center gap-2.5">
+        <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-400/30 bg-emerald-500/10 font-mono text-sm font-bold text-emerald-400 transition-all group-hover:border-emerald-400 group-hover:bg-emerald-500/20">
+          KR
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold tracking-tight text-white sm:text-base">Mu. Krishna Raj</span>
+          <span class="font-mono text-[10px] uppercase tracking-wider text-emerald-400">MEAN &amp; Web3 Dev</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden items-center gap-7 md:flex">
+        <a href="#about" class="text-sm font-medium text-slate-300 transition hover:text-emerald-400">About</a>
+        <a href="#experience" class="text-sm font-medium text-slate-300 transition hover:text-emerald-400">Experience</a>
+        <a href="#skills" class="text-sm font-medium text-slate-300 transition hover:text-emerald-400">Skills</a>
+        <a href="#projects" class="text-sm font-medium text-slate-300 transition hover:text-emerald-400">Projects</a>
+        <a href="#education" class="text-sm font-medium text-slate-300 transition hover:text-emerald-400">Education</a>
+      </nav>
+
+      <!-- Desktop CTA & Mobile Menu Button -->
+      <div class="flex items-center gap-2.5">
+        <a href="#contact" class="hidden rounded-xl bg-emerald-500 px-4 py-2 text-xs font-semibold text-obsidian-950 shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-400 sm:inline-flex sm:items-center sm:gap-2">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-obsidian-950 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-obsidian-950"></span>
+          </span>
+          Hire Me
+        </a>
+        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-obsidian-900 text-slate-300 transition hover:border-emerald-500/40 hover:text-emerald-400 md:hidden">
+          <i class="fa-solid fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden border-t border-emerald-500/10 bg-obsidian-900/95 px-4 py-4 backdrop-blur-lg md:hidden">
+      <div class="flex flex-col space-y-2.5">
+        <a href="#about" class="mobile-nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-400">About</a>
+        <a href="#experience" class="mobile-nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-400">Experience</a>
+        <a href="#skills" class="mobile-nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-400">Technical Skills</a>
+        <a href="#projects" class="mobile-nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-400">Featured Projects</a>
+        <a href="#education" class="mobile-nav-link rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-emerald-500/10 hover:text-emerald-400">Education &amp; Certifications</a>
+        <a href="#contact" class="mobile-nav-link mt-2 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-obsidian-950">
+          <i class="fa-solid fa-paper-plane"></i> Get In Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative py-14 sm:py-20 lg:py-24">
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7">
+          <!-- Availability Pill -->
+          <div class="mb-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-xs font-medium text-emerald-300">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+            </span>
+            <span>Available for Immediate Joining</span>
+            <span class="text-emerald-500/50">•</span>
+            <span class="text-slate-300"><i class="fa-solid fa-location-dot mr-1 text-emerald-400"></i>Madurai, TN, India</span>
+          </div>
+
+          <h1 class="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Hi, I’m <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Mu. Krishna Raj</span>
+          </h1>
+          
+          <p class="mt-3 font-mono text-base font-medium text-emerald-400 sm:text-xl">
+            &gt; MEAN Stack &amp; Web3 / Blockchain Developer_
+          </p>
+
+          <p class="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            Proactive and detail-oriented developer with <strong class="font-semibold text-white">1.5 years of hands-on experience</strong> architecting scalable full-stack web applications (<span class="text-emerald-300">MongoDB, Express.js, Angular, Node.js</span>) and decentralized Ethereum solutions (<span class="text-emerald-300">Smart Contracts, DApps &amp; Wallet Integrations</span>).
+          </p>
+
+          <!-- Primary Hero Action Buttons -->
+          <div class="mt-8 flex flex-wrap items-center gap-3.5">
+            <a href="#projects" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-obsidian-950 shadow-lg shadow-emerald-500/25 transition hover:-translate-y-0.5 hover:bg-emerald-400">
+              <i class="fa-solid fa-code-branch"></i>
+              Explore Projects
+            </a>
+            <button onclick="copyText('rajukishan07@gmail.com', 'Email address')" class="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-obsidian-900/90 px-5 py-3 text-sm font-medium text-slate-200 transition hover:-translate-y-0.5 hover:border-emerald-500/50 hover:text-emerald-300">
+              <i class="fa-regular fa-copy text-emerald-400"></i>
+              Copy Email
+            </button>
+            <button onclick="sharePortfolio()" class="inline-flex items-center gap-2 rounded-xl border border-slate-800 bg-obsidian-900/50 px-4 py-3 text-sm font-medium text-slate-400 transition hover:border-emerald-500/30 hover:text-emerald-300" title="Copy Shareable Portfolio Link">
+              <i class="fa-solid fa-share-nodes text-emerald-400"></i>
+              <span class="hidden sm:inline">Share</span>
+            </button>
+          </div>
+
+          <!-- Quick Key Highlights -->
+          <div class="mt-10 grid grid-cols-3 gap-3 border-t border-slate-800/80 pt-7 sm:max-w-lg sm:gap-6">
+            <div>
+              <div class="font-mono text-2xl font-bold text-white sm:text-3xl">1.5<span class="text-emerald-400">+</span></div>
+              <div class="mt-0.5 text-xs text-slate-400">Years Experience</div>
+            </div>
+            <div>
+              <div class="font-mono text-2xl font-bold text-white sm:text-3xl">MEAN</div>
+              <div class="mt-0.5 text-xs text-slate-400">Full Stack Core</div>
+            </div>
+            <div>
+              <div class="font-mono text-2xl font-bold text-white sm:text-3xl">Web3</div>
+              <div class="mt-0.5 text-xs text-slate-400">Ethereum &amp; DApps</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Terminal / Developer Card -->
+        <div class="lg:col-span-5">
+          <div class="glass-card animate-float overflow-hidden rounded-2xl shadow-2xl">
+            <!-- Terminal Header -->
+            <div class="flex items-center justify-between border-b border-slate-800 bg-obsidian-900/90 px-4 py-3">
+              <div class="flex items-center gap-2">
+                <span class="h-3 w-3 rounded-full bg-rose-500/80"></span>
+                <span class="h-3 w-3 rounded-full bg-amber-500/80"></span>
+                <span class="h-3 w-3 rounded-full bg-emerald-500/80"></span>
+              </div>
+              <span class="font-mono text-xs text-slate-400">krishna.config.ts</span>
+              <span class="rounded bg-emerald-500/15 px-2 py-0.5 font-mono text-[10px] text-emerald-400">READY</span>
+            </div>
+
+            <!-- Code Content -->
+            <div class="p-5 font-mono text-xs leading-relaxed sm:p-6 sm:text-[13px]">
+              <div class="text-slate-500">// Developer Profile &amp; Stack</div>
+              <div class="mt-1">
+                <span class="text-purple-400">export const</span> <span class="text-cyan-300">developer</span> = {
+              </div>
+              <div class="pl-4">
+                <span class="text-slate-300">name:</span> <span class="text-emerald-300">'Mu. Krishna Raj'</span>,
+              </div>
+              <div class="pl-4">
+                <span class="text-slate-300">location:</span> <span class="text-emerald-300">'Madurai, Tamil Nadu'</span>,
+              </div>
+              <div class="pl-4">
+                <span class="text-slate-300">primaryStack:</span> [
+              </div>
+              <div class="pl-8 text-amber-300">
+                'MongoDB', 'Express.js', 'Angular', 'Node.js'
+              </div>
+              <div class="pl-4">],</div>
+              <div class="pl-4">
+                <span class="text-slate-300">web3Capabilities:</span> [
+              </div>
+              <div class="pl-8 text-cyan-300">
+                'Solidity', 'Ethereum', 'Web3.js', 'Ethers.js', 'MetaMask'
+              </div>
+              <div class="pl-4">],</div>
+              <div class="pl-4">
+                <span class="text-slate-300">languagesSpoken:</span> [<span class="text-emerald-300">'English'</span>, <span class="text-emerald-300">'Tamil'</span>],
+              </div>
+              <div class="pl-4">
+                <span class="text-slate-300">availability:</span> <span class="text-emerald-400 font-semibold">'Immediate'</span>
+              </div>
+              <div>};</div>
+
+              <!-- Interactive Quick Contact Strip inside Card -->
+              <div class="mt-5 flex flex-col gap-2 border-t border-slate-800/80 pt-4">
+                <div class="flex items-center justify-between rounded-xl bg-obsidian-950/70 px-3 py-2 text-xs">
+                  <span class="truncate text-slate-300"><i class="fa-solid fa-envelope mr-2 text-emerald-400"></i>rajukishan07@gmail.com</span>
+                  <button onclick="copyText('rajukishan07@gmail.com', 'Email')" class="ml-2 rounded-lg bg-emerald-500/15 px-2.5 py-1 text-[11px] font-medium text-emerald-400 transition hover:bg-emerald-500 hover:text-obsidian-950">
+                    Copy
+                  </button>
+                </div>
+                <div class="flex items-center justify-between rounded-xl bg-obsidian-950/70 px-3 py-2 text-xs">
+                  <span class="text-slate-300"><i class="fa-solid fa-phone mr-2 text-emerald-400"></i>+91 93618 23778</span>
+                  <button onclick="copyText('+91 93618 23778', 'Phone number')" class="ml-2 rounded-lg bg-emerald-500/15 px-2.5 py-1 text-[11px] font-medium text-emerald-400 transition hover:bg-emerald-500 hover:text-obsidian-950">
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / SUMMARY SECTION -->
+    <section id="about" class="scroll-mt-20 py-12">
+      <div class="glass-card rounded-2xl p-6 sm:p-8 lg:p-10">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+              <i class="fa-solid fa-terminal"></i> Professional Summary
+            </div>
+            <h2 class="mt-2 text-2xl font-bold text-white sm:text-3xl">Bridging Scalable Web2 Systems &amp; Decentralized Web3 Protocols</h2>
+            <p class="mt-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+              I specialize in engineering high-performance full-stack applications using the <strong class="text-white">MEAN stack</strong> alongside secure <strong class="text-white">Ethereum blockchain integrations</strong>. From designing tamper-proof Solidity smart contracts and MetaMask wallet workflows to optimizing RESTful Node.js backends and responsive Angular frontends, I focus on clean architecture, Agile delivery, and measurable user impact.
+            </p>
+          </div>
+          <div class="grid shrink-0 grid-cols-2 gap-3 sm:grid-cols-2 lg:w-72">
+            <div class="rounded-xl border border-slate-800 bg-obsidian-950/60 p-4">
+              <i class="fa-solid fa-layer-group text-lg text-emerald-400"></i>
+              <div class="mt-2 text-sm font-semibold text-white">Full Stack</div>
+              <div class="text-xs text-slate-400">End-to-end MEAN Architecture</div>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-obsidian-950/60 p-4">
+              <i class="fa-brands fa-ethereum text-lg text-cyan-400"></i>
+              <div class="mt-2 text-sm font-semibold text-white">Web3 &amp; DApps</div>
+              <div class="text-xs text-slate-400">Smart Contracts &amp; Wallets</div>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-obsidian-950/60 p-4">
+              <i class="fa-solid fa-shield-halved text-lg text-teal-400"></i>
+              <div class="mt-2 text-sm font-semibold text-white">Security First</div>
+              <div class="text-xs text-slate-400">Cisco Cyber Trained</div>
+            </div>
+            <div class="rounded-xl border border-slate-800 bg-obsidian-950/60 p-4">
+              <i class="fa-solid fa-gauge-high text-lg text-amber-400"></i>
+              <div class="mt-2 text-sm font-semibold text-white">Agile &amp; Fast</div>
+              <div class="text-xs text-slate-400">Clean, Optimized Code</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE SECTION -->
+    <section id="experience" class="scroll-mt-20 py-14">
+      <div class="mb-10">
+        <div class="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+          <i class="fa-solid fa-briefcase mr-1.5"></i>Career Journey
+        </div>
+        <h2 class="mt-1.5 text-2xl font-bold text-white sm:text-3xl">Work Experience &amp; Internships</h2>
+      </div>
+
+      <div class="relative space-y-6 before:absolute before:inset-y-2 before:left-4 before:w-0.5 before:bg-gradient-to-b before:from-emerald-500 before:via-emerald-500/40 before:to-slate-800 sm:before:left-6">
+        
+        <!-- Role 1: Osiz Technologies -->
+        <div class="relative pl-11 sm:pl-16">
+          <span class="absolute left-2.5 top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-400 ring-4 ring-obsidian-950 sm:left-4.5"></span>
+          <div class="glass-card rounded-2xl p-6 transition sm:p-7">
+            <div class="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+              <div>
+                <span class="inline-block rounded-md bg-emerald-500/15 px-2.5 py-0.5 font-mono text-xs font-medium text-emerald-400">Full-Time • 1.5 Years</span>
+                <h3 class="mt-2 text-lg font-bold text-white sm:text-xl">MEAN Stack Developer (Web3 &amp; Blockchain)</h3>
+                <p class="text-sm font-medium text-emerald-300">
+                  <i class="fa-solid fa-building mr-1.5 text-slate-400"></i>Osiz Technologies Ltd., Madurai, Tamil Nadu
+                </p>
+              </div>
+              <div class="self-start rounded-xl border border-slate-800 bg-obsidian-950/80 px-3.5 py-1.5 font-mono text-xs text-slate-300 sm:self-center">
+                <i class="fa-regular fa-calendar mr-1.5 text-emerald-400"></i>02 Jan 2025 – 29 May 2026
+              </div>
+            </div>
+
+            <ul class="mt-5 space-y-2.5 text-sm leading-relaxed text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-caret-right mt-1 text-emerald-400"></i>
+                <span>Developed and maintained scalable full-stack web applications using the <strong class="text-white">MEAN stack</strong> (MongoDB, Express.js, Angular, Node.js).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-caret-right mt-1 text-emerald-400"></i>
+                <span>Designed and implemented decentralized applications (<strong class="text-white">DApps</strong>) leveraging <strong class="text-white">Ethereum blockchain</strong> and Solidity smart contracts.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-caret-right mt-1 text-emerald-400"></i>
+                <span>Integrated blockchain networks and secure crypto wallet systems with enterprise web applications to enhance transparency and security.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-caret-right mt-1 text-emerald-400"></i>
+                <span>Collaborated with cross-functional teams under <strong class="text-white">Agile methodologies</strong> to architect, review, and ship high-performance features.</span>
+              </li>
+            </ul>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-lg border border-slate-700/80 bg-obsidian-950/70 px-2.5 py-1 font-mono text-xs text-slate-300">MongoDB</span>
+              <span class="rounded-lg border border-slate-700/80 bg-obsidian-950/70 px-2.5 py-1 font-mono text-xs text-slate-300">Express.js</span>
+              <span class="rounded-lg border border-slate-700/80 bg-obsidian-950/70 px-2.5 py-1 font-mono text-xs text-slate-300">Angular</span>
+              <span class="rounded-lg border border-slate-700/80 bg-obsidian-950/70 px-2.5 py-1 font-mono text-xs text-slate-300">Node.js</span>
+              <span class="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-xs text-emerald-300">Ethereum &amp; Solidity</span>
+              <span class="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-xs text-emerald-300">Web3.js / Ethers.js</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 2: Cisco Cyber Security Intern -->
+        <div class="relative pl-11 sm:pl-16">
+          <span class="absolute left-2.5 top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-teal-400 ring-4 ring-obsidian-950 sm:left-4.5"></span>
+          <div class="glass-card rounded-2xl p-6 transition">
+            <div class="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+              <div>
+                <span class="inline-block rounded-md bg-teal-500/15 px-2.5 py-0.5 font-mono text-xs font-medium text-teal-300">Internship</span>
+                <h3 class="mt-2 text-lg font-bold text-white">Cybersecurity Intern</h3>
+                <p class="text-sm font-medium text-slate-300">
+                  <i class="fa-solid fa-shield-cat mr-1.5 text-teal-400"></i>Cisco Cyber Security, Coimbatore, Tamil Nadu
+                </p>
+              </div>
+              <div class="self-start rounded-xl border border-slate-800 bg-obsidian-950/80 px-3.5 py-1.5 font-mono text-xs text-slate-300 sm:self-center">
+                May 2023 – Jul 2023
+              </div>
+            </div>
+            <p class="mt-3 text-sm text-slate-400">
+              Gained practical exposure to network security fundamentals, threat mitigation, vulnerability assessment, and secure system protocols.
+            </p>
+          </div>
+        </div>
+
+        <!-- Role 3: India Tech Industry Intern -->
+        <div class="relative pl-11 sm:pl-16">
+          <span class="absolute left-2.5 top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-cyan-400 ring-4 ring-obsidian-950 sm:left-4.5"></span>
+          <div class="glass-card rounded-2xl p-6 transition">
+            <div class="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+              <div>
+                <span class="inline-block rounded-md bg-cyan-500/15 px-2.5 py-0.5 font-mono text-xs font-medium text-cyan-300">Internship</span>
+                <h3 class="mt-2 text-lg font-bold text-white">Web Development Intern</h3>
+                <p class="text-sm font-medium text-slate-300">
+                  <i class="fa-solid fa-laptop-code mr-1.5 text-cyan-400"></i>India Tech Industry, Madurai, Tamil Nadu
+                </p>
+              </div>
+              <div class="self-start rounded-xl border border-slate-800 bg-obsidian-950/80 px-3.5 py-1.5 font-mono text-xs text-slate-300 sm:self-center">
+                Mar 2023 – Apr 2023
+              </div>
+            </div>
+            <p class="mt-3 text-sm text-slate-400">
+              Built responsive web interfaces, practiced modern front-end and back-end web workflows, and collaborated on client-ready web modules.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION WITH INTERACTIVE FILTER -->
+    <section id="skills" class="scroll-mt-20 py-14">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <i class="fa-solid fa-microchip mr-1.5"></i>Tech Stack
+          </div>
+          <h2 class="mt-1.5 text-2xl font-bold text-white sm:text-3xl">Technical Skills &amp; Ecosystem</h2>
+        </div>
+
+        <!-- Interactive Skill Filter Tabs -->
+        <div id="skill-filters" class="flex flex-wrap gap-2">
+          <button data-skill-filter="all" class="skill-filter-btn active rounded-xl bg-emerald-500 px-3.5 py-2 text-xs font-semibold text-obsidian-950 transition">
+            All Skills
+          </button>
+          <button data-skill-filter="mean" class="skill-filter-btn rounded-xl border border-slate-800 bg-obsidian-900 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500/40 hover:text-emerald-300">
+            MEAN &amp; Languages
+          </button>
+          <button data-skill-filter="web3" class="skill-filter-btn rounded-xl border border-slate-800 bg-obsidian-900 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500/40 hover:text-emerald-300">
+            Blockchain &amp; Web3
+          </button>
+          <button data-skill-filter="tools" class="skill-filter-btn rounded-xl border border-slate-800 bg-obsidian-900 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500/40 hover:text-emerald-300">
+            Tools &amp; Practices
+          </button>
+        </div>
+      </div>
+
+      <!-- Skills Grid -->
+      <div id="skills-grid" class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        
+        <!-- Card 1: Programming Languages -->
+        <div data-skill-cat="mean web3" class="skill-card glass-card rounded-2xl p-6 transition">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-400">
+              <i class="fa-solid fa-code text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white">Languages</h3>
+              <p class="text-xs text-slate-400">Core &amp; Smart Contract</p>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 rounded-xl border border-amber-500/25 bg-amber-500/10 px-3 py-1.5 font-mono text-xs font-medium text-amber-200">
+              <i class="fa-brands fa-js text-amber-400"></i> JavaScript (ES6+)
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-xl border border-sky-500/25 bg-sky-500/10 px-3 py-1.5 font-mono text-xs font-medium text-sky-200">
+              <i class="fa-solid fa-file-code text-sky-400"></i> TypeScript
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs font-medium text-emerald-200">
+              <i class="fa-brands fa-ethereum text-emerald-400"></i> Solidity
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 2: Frameworks & Database -->
+        <div data-skill-cat="mean" class="skill-card glass-card rounded-2xl p-6 transition">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
+              <i class="fa-solid fa-server text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white">Frameworks &amp; Database</h3>
+              <p class="text-xs text-slate-400">Full-Stack MEAN Architecture</p>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 rounded-xl border border-rose-500/25 bg-rose-500/10 px-3 py-1.5 font-mono text-xs font-medium text-rose-200">
+              <i class="fa-brands fa-angular text-rose-400"></i> Angular
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs font-medium text-emerald-200">
+              <i class="fa-brands fa-node-js text-emerald-400"></i> Node.js
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-xl border border-slate-600/50 bg-slate-800/80 px-3 py-1.5 font-mono text-xs font-medium text-slate-200">
+              <i class="fa-solid fa-route text-slate-300"></i> Express.js
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-xl border border-green-500/25 bg-green-500/10 px-3 py-1.5 font-mono text-xs font-medium text-green-200">
+              <i class="fa-solid fa-database text-green-400"></i> MongoDB
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 3: Blockchain & Web3 -->
+        <div data-skill-cat="web3" class="skill-card glass-card rounded-2xl p-6 transition">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400">
+              <i class="fa-brands fa-ethereum text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white">Blockchain &amp; Web3</h3>
+              <p class="text-xs text-slate-400">Decentralized Ecosystem</p>
+            </div>
+          </div>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded-xl border border-cyan-500/25 bg-cyan-500/10 px-3 py-1.5 font-mono text-xs font-medium text-cyan-200">Ethereum</span>
+            <span class="rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs font-medium text-emerald-200">Smart Contracts</span>
+            <span class="rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">Web3.js</span>
+            <span class="rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">Ethers.js</span>
+            <span class="rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">MetaMask</span>
+            <span class="rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">Truffle</span>
+            <span class="rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">Ganache</span>
+            <span class="rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">Remix IDE</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Dev Tools & Practices -->
+        <div data-skill-cat="tools mean" class="skill-card glass-card rounded-2xl p-6 transition md:col-span-2 lg:col-span-3">
+          <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/15 text-purple-400">
+                <i class="fa-solid fa-screwdriver-wrench text-lg"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white">Developer Tools &amp; Engineering Practices</h3>
+                <p class="text-xs text-slate-400">Workflow, Testing, Version Control &amp; Architecture</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center gap-1.5 rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">
+                <i class="fa-brands fa-git-alt text-orange-400"></i> Git
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">
+                <i class="fa-solid fa-paper-plane text-orange-400"></i> Postman
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-xl border border-slate-700 bg-obsidian-950/80 px-3 py-1.5 font-mono text-xs text-slate-200">
+                <i class="fa-solid fa-code text-sky-400"></i> VS Code
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs text-emerald-300">
+                <i class="fa-solid fa-plug text-emerald-400"></i> RESTful APIs
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-xl border border-cyan-500/25 bg-cyan-500/10 px-3 py-1.5 font-mono text-xs text-cyan-300">
+                <i class="fa-solid fa-cubes text-cyan-400"></i> DApp Development
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-xl border border-purple-500/25 bg-purple-500/10 px-3 py-1.5 font-mono text-xs text-purple-300">
+                <i class="fa-solid fa-arrows-spin text-purple-400"></i> Agile Methodologies
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION WITH INTERACTIVE FILTERS & MODAL -->
+    <section id="projects" class="scroll-mt-20 py-14">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <i class="fa-solid fa-folder-open mr-1.5"></i>Portfolio Showcase
+          </div>
+          <h2 class="mt-1.5 text-2xl font-bold text-white sm:text-3xl">Featured Projects</h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div id="project-filters" class="flex flex-wrap gap-2">
+          <button data-project-filter="all" class="project-filter-btn active rounded-xl bg-emerald-500 px-3.5 py-2 text-xs font-semibold text-obsidian-950 transition">
+            All (4)
+          </button>
+          <button data-project-filter="web3" class="project-filter-btn rounded-xl border border-slate-800 bg-obsidian-900 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500/40 hover:text-emerald-300">
+            Web3 / Blockchain
+          </button>
+          <button data-project-filter="fullstack" class="project-filter-btn rounded-xl border border-slate-800 bg-obsidian-900 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500/40 hover:text-emerald-300">
+            Full Stack
+          </button>
+          <button data-project-filter="aiml" class="project-filter-btn rounded-xl border border-slate-800 bg-obsidian-900 px-3.5 py-2 text-xs font-medium text-slate-300 transition hover:border-emerald-500/40 hover:text-emerald-300">
+            AI / ML
+          </button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+        
+        <!-- Project 1: Decentralized Marketplace DApp -->
+        <article data-project-cat="web3 fullstack" class="project-card glass-card group flex flex-col justify-between rounded-2xl p-6 transition sm:p-7">
+          <div>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+                <i class="fa-solid fa-store text-lg"></i>
+              </div>
+              <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-[11px] font-medium text-emerald-300">
+                Web3 / Blockchain
+              </span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white transition group-hover:text-emerald-400">
+              Decentralized Marketplace DApp
+            </h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-300">
+              Ethereum-based online marketplace powered by Solidity smart contracts to guarantee transparent, peer-to-peer, and tamper-proof digital asset transactions without centralized intermediaries.
+            </p>
+          </div>
+
+          <div class="mt-6">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-emerald-300">Solidity</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-cyan-300">Ethereum</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-slate-300">Web3.js</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-slate-300">Angular</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-slate-300">Node.js</span>
+            </div>
+
+            <button onclick="openProjectModal('marketplace')" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500 hover:text-obsidian-950">
+              <span>Inspect Architecture &amp; Details</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 2: Crypto Wallet Integration -->
+        <article data-project-cat="web3" class="project-card glass-card group flex flex-col justify-between rounded-2xl p-6 transition sm:p-7">
+          <div>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-400">
+                <i class="fa-solid fa-wallet text-lg"></i>
+              </div>
+              <span class="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-[11px] font-medium text-cyan-300">
+                Web3 / Wallet
+              </span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white transition group-hover:text-emerald-400">
+              Crypto Wallet Integration
+            </h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-300">
+              Web application seamlessly integrated with the MetaMask browser wallet for instant account authentication, balance querying, and secure Ethereum-based token transactions.
+            </p>
+          </div>
+
+          <div class="mt-6">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-cyan-300">Ethers.js</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-amber-300">MetaMask</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-sky-300">TypeScript</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-slate-300">Angular</span>
+            </div>
+
+            <button onclick="openProjectModal('wallet')" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500 hover:text-obsidian-950">
+              <span>Inspect Architecture &amp; Details</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 3: Movie Review Website -->
+        <article data-project-cat="fullstack" class="project-card glass-card group flex flex-col justify-between rounded-2xl p-6 transition sm:p-7">
+          <div>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-teal-500/30 bg-teal-500/10 text-teal-400">
+                <i class="fa-solid fa-film text-lg"></i>
+              </div>
+              <span class="rounded-full border border-teal-500/30 bg-teal-500/10 px-3 py-1 font-mono text-[11px] font-medium text-teal-300">
+                Full Stack MEAN
+              </span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white transition group-hover:text-emerald-400">
+              Movie Review &amp; Comparison Platform
+            </h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-300">
+              Interactive full-stack entertainment portal that summarizes films, benchmarks ratings against similar titles, and gives audiences a clear frame of reference for informed viewing choices.
+            </p>
+          </div>
+
+          <div class="mt-6">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-green-300">MongoDB</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-slate-300">Express.js</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-rose-300">Angular</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-emerald-300">Node.js</span>
+            </div>
+
+            <button onclick="openProjectModal('movies')" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500 hover:text-obsidian-950">
+              <span>Inspect Architecture &amp; Details</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 4: Multiple-Disease Prediction -->
+        <article data-project-cat="aiml fullstack" class="project-card glass-card group flex flex-col justify-between rounded-2xl p-6 transition sm:p-7">
+          <div>
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-400">
+                <i class="fa-solid fa-heart-pulse text-lg"></i>
+              </div>
+              <span class="rounded-full border border-purple-500/30 bg-purple-500/10 px-3 py-1 font-mono text-[11px] font-medium text-purple-300">
+                AI / Machine Learning
+              </span>
+            </div>
+
+            <h3 class="mt-5 text-xl font-bold text-white transition group-hover:text-emerald-400">
+              Multiple-Disease Prediction System
+            </h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-300">
+              Final-year capstone web application leveraging machine learning models to evaluate overlapping clinical symptoms and predict risks for diabetes, heart, lung, COVID, and kidney diseases.
+            </p>
+          </div>
+
+          <div class="mt-6">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-amber-300">Python</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-purple-300">Machine Learning</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-slate-300">Web Application</span>
+              <span class="rounded-lg bg-obsidian-950/90 px-2.5 py-1 font-mono text-xs text-emerald-300">Healthcare Analytics</span>
+            </div>
+
+            <button onclick="openProjectModal('disease')" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500 hover:text-obsidian-950">
+              <span>Inspect Architecture &amp; Details</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS SECTION -->
+    <section id="education" class="scroll-mt-20 py-14">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        
+        <!-- Education Column -->
+        <div class="lg:col-span-6">
+          <div class="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <i class="fa-solid fa-graduation-cap mr-1.5"></i>Academic Background
+          </div>
+          <h2 class="mt-1.5 text-2xl font-bold text-white sm:text-3xl">Education</h2>
+
+          <div class="mt-6 space-y-4">
+            <!-- B.Tech -->
+            <div class="glass-card rounded-2xl p-6">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <span class="rounded-md bg-emerald-500/15 px-2.5 py-0.5 font-mono text-xs text-emerald-400">Aug 2020 – May 2024</span>
+                  <h3 class="mt-2 text-lg font-bold text-white">B.Tech in Computer Science and Engineering</h3>
+                  <p class="mt-1 text-sm text-slate-300">Karunya Institute of Technology and Sciences</p>
+                  <p class="mt-0.5 text-xs text-slate-400"><i class="fa-solid fa-location-dot mr-1 text-emerald-400"></i>Coimbatore, Tamil Nadu</p>
+                </div>
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+                  <i class="fa-solid fa-university"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- HSC -->
+            <div class="glass-card rounded-2xl p-5">
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <h3 class="font-bold text-white">Higher Secondary Certificate (HSC)</h3>
+                  <p class="mt-0.5 text-xs text-slate-300">SBOA Matriculation and Higher Secondary School, Madurai</p>
+                </div>
+                <span class="shrink-0 rounded-lg border border-slate-800 bg-obsidian-950 px-3 py-1 font-mono text-xs text-slate-300">Mar 2020</span>
+              </div>
+            </div>
+
+            <!-- SSLC -->
+            <div class="glass-card rounded-2xl p-5">
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <h3 class="font-bold text-white">Secondary School Leaving Certificate (SSLC)</h3>
+                  <p class="mt-0.5 text-xs text-slate-300">SBOA Matriculation and Higher Secondary School, Madurai</p>
+                </div>
+                <span class="shrink-0 rounded-lg border border-slate-800 bg-obsidian-950 px-3 py-1 font-mono text-xs text-slate-300">Mar 2018</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications Column -->
+        <div class="lg:col-span-6">
+          <div class="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <i class="fa-solid fa-certificate mr-1.5"></i>Verified Credentials
+          </div>
+          <h2 class="mt-1.5 text-2xl font-bold text-white sm:text-3xl">Certifications</h2>
+
+          <div class="mt-6 space-y-3.5">
+            <!-- Cert 1 -->
+            <div class="glass-card flex items-center gap-4 rounded-2xl p-4 transition">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-400">
+                <i class="fa-solid fa-shield-halved text-lg"></i>
+              </div>
+              <div>
+                <div class="font-mono text-[11px] uppercase tracking-wider text-cyan-400">Cisco Networking Academy</div>
+                <h3 class="text-sm font-bold text-white sm:text-base">Cybersecurity Essentials</h3>
+              </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="glass-card flex items-center gap-4 rounded-2xl p-4 transition">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
+                <i class="fa-brands fa-python text-lg"></i>
+              </div>
+              <div>
+                <div class="font-mono text-[11px] uppercase tracking-wider text-blue-400">IBM</div>
+                <h3 class="text-sm font-bold text-white sm:text-base">Python Basics for Data Science</h3>
+              </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="glass-card flex items-center gap-4 rounded-2xl p-4 transition">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
+                <i class="fa-solid fa-vial-circle-check text-lg"></i>
+              </div>
+              <div>
+                <div class="font-mono text-[11px] uppercase tracking-wider text-emerald-400">NPTEL</div>
+                <h3 class="text-sm font-bold text-white sm:text-base">Software Testing</h3>
+              </div>
+            </div>
+
+            <!-- Cert 4 -->
+            <div class="glass-card flex items-center gap-4 rounded-2xl p-4 transition">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-500/15 text-teal-400">
+                <i class="fa-solid fa-network-wired text-lg"></i>
+              </div>
+              <div>
+                <div class="font-mono text-[11px] uppercase tracking-wider text-teal-400">NPTEL</div>
+                <h3 class="text-sm font-bold text-white sm:text-base">Introduction to Industry 4.0 and Industrial Internet of Things</h3>
+              </div>
+            </div>
+
+            <!-- Cert 5 -->
+            <div class="glass-card flex items-center gap-4 rounded-2xl p-4 transition">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/15 text-amber-400">
+                <i class="fa-solid fa-language text-lg"></i>
+              </div>
+              <div>
+                <div class="font-mono text-[11px] uppercase tracking-wider text-amber-400">NPTEL</div>
+                <h3 class="text-sm font-bold text-white sm:text-base">English Language for Competitive Exams</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT / HIRE ME SECTION -->
+    <section id="contact" class="scroll-mt-20 py-14">
+      <div class="glass-card relative overflow-hidden rounded-3xl p-7 sm:p-10 lg:p-12">
+        <!-- Decorative Corner Glow -->
+        <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-emerald-500/15 blur-3xl"></div>
+
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-xs text-emerald-300">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              Open to Full-Time Roles &amp; Web3 Projects
+            </div>
+            <h2 class="mt-4 text-2xl font-extrabold text-white sm:text-4xl">
+              Let’s Build Something Scalable Together.
+            </h2>
+            <p class="mt-3 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
+              Looking for a dedicated <strong class="text-white">MEAN Stack</strong> or <strong class="text-white">Web3/Blockchain Developer</strong> available for immediate joining? Reach out directly via email or phone, or copy my contact details below.
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center gap-4 text-xs text-slate-400 sm:text-sm">
+              <span><i class="fa-solid fa-location-dot mr-1.5 text-emerald-400"></i>Madurai, Tamil Nadu 625019</span>
+              <span>•</span>
+              <span><i class="fa-solid fa-comments mr-1.5 text-emerald-400"></i>English &amp; Tamil</span>
+            </div>
+          </div>
+
+          <div class="space-y-3.5 lg:col-span-5">
+            <!-- Email Action Card -->
+            <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-obsidian-950/85 p-4">
+              <div class="min-w-0 pr-2">
+                <div class="font-mono text-[11px] uppercase text-slate-400">Email Address</div>
+                <a href="mailto:rajukishan07@gmail.com" class="block truncate text-sm font-semibold text-white hover:text-emerald-400 sm:text-base">
+                  rajukishan07@gmail.com
+                </a>
+              </div>
+              <div class="flex shrink-0 items-center gap-2">
+                <button onclick="copyText('rajukishan07@gmail.com', 'Email address')" class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500 hover:text-obsidian-950" title="Copy Email">
+                  <i class="fa-regular fa-copy mr-1"></i>Copy
+                </button>
+                <a href="mailto:rajukishan07@gmail.com" class="rounded-xl bg-emerald-500 px-3 py-2 text-xs font-semibold text-obsidian-950 transition hover:bg-emerald-400" title="Send Email">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone Action Card -->
+            <div class="flex items-center justify-between rounded-2xl border border-slate-800 bg-obsidian-950/85 p-4">
+              <div class="min-w-0 pr-2">
+                <div class="font-mono text-[11px] uppercase text-slate-400">Phone / WhatsApp</div>
+                <a href="tel:+919361823778" class="block truncate text-sm font-semibold text-white hover:text-emerald-400 sm:text-base">
+                  +91 93618 23778
+                </a>
+              </div>
+              <div class="flex shrink-0 items-center gap-2">
+                <button onclick="copyText('+91 93618 23778', 'Phone number')" class="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500 hover:text-obsidian-950" title="Copy Phone">
+                  <i class="fa-regular fa-copy mr-1"></i>Copy
+                </button>
+                <a href="tel:+919361823778" class="rounded-xl bg-emerald-500 px-3 py-2 text-xs font-semibold text-obsidian-950 transition hover:bg-emerald-400" title="Call Now">
+                  <i class="fa-solid fa-phone"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-10 border-t border-slate-800/80 bg-obsidian-950/90 py-8">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 text-center sm:flex-row sm:px-6 sm:text-left lg:px-8">
+      <div>
+        <span class="font-mono text-sm font-bold text-white">Mu. Krishna Raj</span>
+        <span class="mx-2 text-slate-600">|</span>
+        <span class="text-xs text-slate-400">MEAN Stack &amp; Web3/Blockchain Developer • Madurai, India</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs text-slate-400">
+        <button onclick="sharePortfolio()" class="transition hover:text-emerald-400">
+          <i class="fa-solid fa-link mr-1 text-emerald-400"></i>Copy Portfolio URL
+        </button>
+        <a href="#home" class="transition hover:text-emerald-400">
+          Back to top <i class="fa-solid fa-arrow-up ml-1"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="project-modal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center bg-obsidian-950/80 p-4 backdrop-blur-sm" aria-modal="true" role="dialog">
+    <div class="modal-panel relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-emerald-500/30 bg-obsidian-900 p-6 shadow-2xl sm:p-8">
+      <button onclick="closeProjectModal()" aria-label="Close modal" class="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-xl border border-slate-700 bg-obsidian-850 text-slate-300 transition hover:border-emerald-500/50 hover:text-emerald-400">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="modal-category" class="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-mono text-xs font-medium text-emerald-300">
+        Category
+      </div>
+      <h3 id="modal-title" class="mt-3 pr-8 text-2xl font-bold text-white sm:text-3xl">Project Title</h3>
+      <p id="modal-summary" class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+        Project summary goes here.
+      </p>
+
+      <div class="mt-6 rounded-2xl border border-slate-800 bg-obsidian-950/70 p-5">
+        <h4 class="font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400">
+          <i class="fa-solid fa-microchip mr-1.5"></i>Key Engineering Highlights
+        </h4>
+        <ul id="modal-highlights" class="mt-3 space-y-2.5 text-sm text-slate-300">
+          <!-- Populated dynamically -->
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h4 class="font-mono text-xs font-semibold uppercase tracking-wider text-slate-400">Technologies Used</h4>
+        <div id="modal-tech" class="mt-2.5 flex flex-wrap gap-2">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <div class="mt-7 flex flex-wrap items-center justify-end gap-3 border-t border-slate-800 pt-5">
+        <button onclick="closeProjectModal()" class="rounded-xl border border-slate-700 px-4 py-2.5 text-xs font-semibold text-slate-300 transition hover:border-slate-500 hover:text-white">
+          Close Window
+        </button>
+        <a href="#contact" onclick="closeProjectModal()" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2.5 text-xs font-semibold text-obsidian-950 transition hover:bg-emerald-400">
+          <i class="fa-solid fa-comments"></i> Discuss This Project
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="pointer-events-none fixed bottom-5 right-5 z-50 flex translate-y-4 items-center gap-2.5 rounded-2xl border border-emerald-500/40 bg-obsidian-900/95 px-4 py-3 text-xs font-medium text-white opacity-0 shadow-2xl shadow-emerald-950/50 backdrop-blur-md transition-all duration-300 sm:text-sm">
+    <span class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+      <i class="fa-solid fa-check"></i>
+    </span>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- INTERACTIVE JAVASCRIPT -->
+  <script>
+    // Project Data Repository
+    const projectDetails = {
+      marketplace: {
+        category: 'Web3 / Blockchain & Full Stack',
+        title: 'Decentralized Marketplace DApp',
+        summary: 'A decentralized peer-to-peer online marketplace powered by Ethereum smart contracts, removing centralized middlemen while guaranteeing transparent, verifiable, and tamper-proof transactions.',
+        highlights: [
+          'Architected and deployed Solidity smart contracts to handle item listings, escrow states, and ownership transfers on Ethereum.',
+          'Integrated Web3.js with an Angular frontend and Node.js backend for real-time blockchain state synchronization.',
+          'Ensured immutable transaction records and automated settlement upon buyer-seller fulfillment.'
+        ],
+        tech: ['Solidity', 'Ethereum', 'Web3.js', 'Angular', 'Node.js', 'Smart Contracts']
+      },
+      wallet: {
+        category: 'Web3 / Wallet Connectivity',
+        title: 'Crypto Wallet Integration',
+        summary: 'A responsive Web3-enabled web application integrated directly with MetaMask to authenticate users via cryptographic signatures and execute Ethereum token transfers seamlessly.',
+        highlights: [
+          'Implemented MetaMask provider detection, account switching listeners, and network chain validation.',
+          'Built clean TypeScript & Ethers.js service layers in Angular to read wallet balances and broadcast signed transactions.',
+          'Provided real-time transaction status feedback (pending, confirmed, failed) for smooth user onboarding.'
+        ],
+        tech: ['Ethers.js', 'MetaMask', 'TypeScript', 'Angular', 'Ethereum']
+      },
+      movies: {
+        category: 'Full Stack MEAN Application',
+        title: 'Movie Review & Comparison Website',
+        summary: 'A full-stack web application designed to summarize movies concisely and compare them side-by-side with similar titles, giving viewers a clear frame of reference before watching.',
+        highlights: [
+          'Engineered RESTful APIs using Node.js and Express.js connected to MongoDB for fast movie metadata and review queries.',
+          'Built dynamic Angular views allowing users to filter genres, read concise summaries, and compare similar titles.',
+          'Optimized database indexing and payload responses for snappy browsing across mobile and desktop devices.'
+        ],
+        tech: ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'RESTful APIs']
+      },
+      disease: {
+        category: 'AI / Machine Learning Capstone',
+        title: 'Multiple-Disease Prediction Using Symptoms',
+        summary: 'A final-year B.Tech capstone web application utilizing machine learning classification models to evaluate complex patient symptoms and estimate risk across diabetes, heart, lung, COVID, and kidney diseases.',
+        highlights: [
+          'Trained and evaluated supervised ML models on clinical symptom datasets to handle multi-disease diagnostic patterns.',
+          'Created an accessible web interface enabling early risk screening to assist doctors and optimize hospital resource allocation.',
+          'Streamlined symptom input workflows so non-technical users can receive clear, structured diagnostic insights.'
+        ],
+        tech: ['Python', 'Machine Learning', 'Data Science', 'Web Application', 'Healthcare Analytics']
+      }
+    };
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Toast Notification Helper
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+
+      toast.classList.remove('opacity-0', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4');
+      }, 2800);
+    }
+
+    // Reliable Copy to Clipboard (works inside iframes & standard browsers)
+    function copyText(text, label = 'Text') {
+      const tempInput = document.createElement('textarea');
+      tempInput.value = text;
+      tempInput.style.position = 'fixed';
+      tempInput.style.left = '-9999px';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast(`${label} copied: ${text}`);
+      } catch (err) {
+        showToast(`Unable to copy ${label}`);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    // Share Portfolio URL Helper
+    function sharePortfolio() {
+      const url = window.location.href;
+      copyText(url, 'Portfolio link');
+    }
+
+    // Interactive Skill Filter Logic
+    const skillFilterBtns = document.querySelectorAll('.skill-filter-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    skillFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-skill-filter');
+
+        // Update active button styling
+        skillFilterBtns.forEach(b => {
+          b.classList.remove('bg-emerald-500', 'text-obsidian-950', 'font-semibold');
+          b.classList.add('border', 'border-slate-800', 'bg-obsidian-900', 'text-slate-300', 'font-medium');
+        });
+        btn.classList.remove('border', 'border-slate-800', 'bg-obsidian-900', 'text-slate-300', 'font-medium');
+        btn.classList.add('bg-emerald-500', 'text-obsidian-950', 'font-semibold');
+
+        // Filter cards
+        skillCards.forEach(card => {
+          const categories = card.getAttribute('data-skill-cat').split(' ');
+          if (filter === 'all' || categories.includes(filter)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Interactive Project Filter Logic
+    const projectFilterBtns = document.querySelectorAll('.project-filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    projectFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-project-filter');
+
+        // Update active button styling
+        projectFilterBtns.forEach(b => {
+          b.classList.remove('bg-emerald-500', 'text-obsidian-950', 'font-semibold');
+          b.classList.add('border', 'border-slate-800', 'bg-obsidian-900', 'text-slate-300', 'font-medium');
+        });
+        btn.classList.remove('border', 'border-slate-800', 'bg-obsidian-900', 'text-slate-300', 'font-medium');
+        btn.classList.add('bg-emerald-500', 'text-obsidian-950', 'font-semibold');
+
+        // Filter project cards
+        projectCards.forEach(card => {
+          const categories = card.getAttribute('data-project-cat').split(' ');
+          if (filter === 'all' || categories.includes(filter)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Project Modal Controls
+    const modal = document.getElementById('project-modal');
+    const modalCategory = document.getElementById('modal-category');
+    const modalTitle = document.getElementById('modal-title');
+    const modalSummary = document.getElementById('modal-summary');
+    const modalHighlights = document.getElementById('modal-highlights');
+    const modalTech = document.getElementById('modal-tech');
+
+    function openProjectModal(projectKey) {
+      const data = projectDetails[projectKey];
+      if (!data) return;
+
+      modalCategory.textContent = data.category;
+      modalTitle.textContent = data.title;
+      modalSummary.textContent = data.summary;
+
+      modalHighlights.innerHTML = data.highlights
+        .map(item => `<li class="flex items-start gap-2.5"><i class="fa-solid fa-circle-check mt-1 text-emerald-400"></i><span>${item}</span></li>`)
+        .join('');
+
+      modalTech.innerHTML = data.tech
+        .map(t => `<span class="rounded-xl border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 font-mono text-xs text-emerald-300">${t}</span>`)
+        .join('');
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on backdrop click or Escape key
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeProjectModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeProjectModal();
+      }
+    });
+  </script>
+</body>
+</html>
